@@ -6,7 +6,7 @@
 /*   By: jalves-v <jalves-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:11:00 by jalves-v          #+#    #+#             */
-/*   Updated: 2024/05/09 15:58:56 by jalves-v         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:40:32 by jalves-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 7
+#  define BUFFER_SIZE 10
 # endif
 
 # include <fcntl.h>

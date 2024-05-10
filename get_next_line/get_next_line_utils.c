@@ -6,7 +6,7 @@
 /*   By: jalves-v <jalves-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:58:33 by jalves-v          #+#    #+#             */
-/*   Updated: 2024/05/09 15:52:30 by jalves-v         ###   ########.fr       */
+/*   Updated: 2024/05/10 15:09:51 by jalves-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,22 @@ int	ft_strlen(char *s)
 
 int	get_remaining_line(char *buf)
 {
-	int		i;
-	int		j;
-	char	*tmp;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	tmp = buf;
 	while (buf[i])
 	{
 		if (buf[i] == '\n')
 		{
 			buf[i++] = '\0';
 			while (buf[i])
-				tmp[j++] = buf[i++];
-			tmp[j] = '\0';
+			{
+				buf[j++] = buf[i];
+				buf[i++] = '\0';
+			}
+			buf[j] = '\0';
 			return (1);
 		}
 		buf[i++] = '\0';
