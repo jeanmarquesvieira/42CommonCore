@@ -6,7 +6,7 @@
 /*   By: jalves-v <jalves-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:02:54 by jalves-v          #+#    #+#             */
-/*   Updated: 2024/05/10 15:29:23 by jalves-v         ###   ########.fr       */
+/*   Updated: 2024/05/11 21:14:00 by jalves-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,30 @@
 char	*get_next_line(int fd)
 {
 	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
-	char		*line_found;
+	char		*current_line;
+	int			bytes_read;
+	int			line_break_found;
 
-	line_found = NULL;
 	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
-	while (*buffer[fd] || read(fd, buffer[fd], BUFFER_SIZE) > 0)
+	current_line = NULL;
+	bytes_read = 1;
+	while (bytes_read != 0)
 	{
-		line_found = ft_strjoin_n(line_found, buffer[fd]);
-		if (get_remaining_line(buffer[fd]))
-			break ;
+		if (!*buffer[fd])
+			bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
+		if (bytes_read == 0)
+			return (current_line);
+		if (bytes_read < 0 && current_line)
+			free(current_line);
+		if (bytes_read < 0)
+			return (NULL);
+		current_line = ft_strjoin_n(current_line, buffer[fd]);
+		line_break_found = get_remaining_line(buffer[fd]);
+		if (line_break_found)
+			return (current_line);
 	}
-	return (line_found);
+	if (current_line || get_remaining_line(buffer[fd]))
+		return (current_line);
+	return (NULL);
 }

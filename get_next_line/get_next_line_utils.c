@@ -6,7 +6,7 @@
 /*   By: jalves-v <jalves-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 11:58:33 by jalves-v          #+#    #+#             */
-/*   Updated: 2024/05/10 15:09:51 by jalves-v         ###   ########.fr       */
+/*   Updated: 2024/05/11 21:14:29 by jalves-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ int	get_remaining_line(char *buf)
 			while (buf[i])
 			{
 				buf[j++] = buf[i];
-				buf[i++] = '\0';
+				buf[i] = '\0';
+				i++;
 			}
 			buf[j] = '\0';
 			return (1);
 		}
-		buf[i++] = '\0';
+		buf[i] = '\0';
+		i++;
 	}
 	return (0);
 }
@@ -84,6 +86,7 @@ char	*ft_strjoin_n(char *current_line, char *buf)
 		attached_str[i] = current_line[i];
 		i++;
 	}
+	free(current_line);
 	while (*buf)
 	{
 		attached_str[i++] = *buf;
@@ -91,6 +94,5 @@ char	*ft_strjoin_n(char *current_line, char *buf)
 			break ;
 	}
 	attached_str[i] = '\0';
-	free(current_line);
 	return (attached_str);
 }
