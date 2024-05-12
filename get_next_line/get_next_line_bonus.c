@@ -6,7 +6,7 @@
 /*   By: jalves-v <jalves-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:02:54 by jalves-v          #+#    #+#             */
-/*   Updated: 2024/05/11 21:14:00 by jalves-v         ###   ########.fr       */
+/*   Updated: 2024/05/12 13:43:06 by jalves-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	*get_next_line(int fd)
 	static char	buffer[FOPEN_MAX][BUFFER_SIZE + 1];
 	char		*current_line;
 	int			bytes_read;
-	int			line_break_found;
 
 	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -34,8 +33,7 @@ char	*get_next_line(int fd)
 		if (bytes_read < 0)
 			return (NULL);
 		current_line = ft_strjoin_n(current_line, buffer[fd]);
-		line_break_found = get_remaining_line(buffer[fd]);
-		if (line_break_found)
+		if (get_remaining_line(buffer[fd]))
 			return (current_line);
 	}
 	if (current_line || get_remaining_line(buffer[fd]))
