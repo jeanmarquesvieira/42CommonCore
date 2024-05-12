@@ -6,7 +6,7 @@
 /*   By: jalves-v <jalves-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:17:52 by jalves-v          #+#    #+#             */
-/*   Updated: 2024/05/11 21:22:18 by jalves-v         ###   ########.fr       */
+/*   Updated: 2024/05/12 13:44:26 by jalves-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ int	ft_strlen(char *s)
  * get_remaining_line iterates over a copy of the string passed as argument,
 	the buffer.
  * If a line break is found,
-	it'll start copying to a temporary variable
-	the characters after the new line, returning 1.
+	it'll start moving the characters after the new line
+	to the beginning of the buf,
+	setting them to null and returning 1.
  * Otherwise, it'll return 0, meaning that no new line was found.
  **/
 
