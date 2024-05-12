@@ -31,28 +31,29 @@ int	ft_strlen(char *s)
  * get_remaining_line iterates over a copy of the string passed as argument,
 	the buffer.
  * If a line break is found,
-	it'll start copying to a temporary variable the characters after the new line,
-	returning 1.
+	it'll start copying to a temporary variable
+	the characters after the new line, returning 1.
  * Otherwise, it'll return 0, meaning that no new line was found.
  **/
 
 int	get_remaining_line(char *buf)
 {
-	int		i;
-	int		j;
-	char	*tmp;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
-	tmp = buf;
 	while (buf[i])
 	{
 		if (buf[i] == '\n')
 		{
 			buf[i++] = '\0';
 			while (buf[i])
-				tmp[j++] = buf[i++];
-			tmp[j] = '\0';
+			{
+				buf[j++] = buf[i];
+				buf[i++] = '\0';
+			}
+			buf[j] = '\0';
 			return (1);
 		}
 		buf[i++] = '\0';

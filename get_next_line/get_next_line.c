@@ -17,7 +17,6 @@ char	*get_next_line(int fd)
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*current_line;
 	int			bytes_read;
-	int			line_break_found;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -34,8 +33,7 @@ char	*get_next_line(int fd)
 		if (bytes_read < 0)
 			return (NULL);
 		current_line = ft_strjoin_n(current_line, buffer);
-		line_break_found = get_remaining_line(buffer);
-		if (line_break_found)
+		if (get_remaining_line(buffer))
 			return (current_line);
 	}
 	if (current_line || get_remaining_line(buffer))
