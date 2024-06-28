@@ -6,7 +6,7 @@
 /*   By: jalves-v <jalves-v@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:02:54 by jalves-v          #+#    #+#             */
-/*   Updated: 2024/05/12 13:43:06 by jalves-v         ###   ########.fr       */
+/*   Updated: 2024/05/21 17:40:30 by jalves-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,5 @@ char	*get_next_line(int fd)
 		if (get_remaining_line(buffer[fd]))
 			return (current_line);
 	}
-	if (current_line || get_remaining_line(buffer[fd]))
-		return (current_line);
 	return (NULL);
 }
