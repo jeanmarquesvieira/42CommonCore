@@ -7,3 +7,6 @@
 [submodule "get_next_line"]
 	path = get_next_line
 	url = https://github.com/jeanmarquesvieira/get_next_line.git
+[submodule "Born2beRoot"]
+	path = Born2beRoot
+	url = https://github.com/jeanmarquesvieira/Born2beRoot.git
